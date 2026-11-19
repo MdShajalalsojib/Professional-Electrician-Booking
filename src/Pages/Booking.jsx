@@ -1,7 +1,12 @@
 import { useState } from 'react'
-import { FaCalendarCheck, FaCheck } from 'react-icons/fa'
+import { FaArrowRight, FaBolt, FaCalendarAlt, FaCalendarCheck, FaCheck, FaClock, FaPhoneAlt, FaShieldAlt } from 'react-icons/fa'
 
 const services = ['Electrical repairs', 'Lighting installation', 'Wiring & outlets', 'Fans & appliances', 'Safety inspection', 'Other']
+const steps = [
+  'Choose the service you need',
+  'Pick a date and convenient time',
+  'We’ll call to confirm your visit',
+]
 
 export default function Booking() {
   const [booked, setBooked] = useState(false)
@@ -12,5 +17,50 @@ export default function Booking() {
     event.currentTarget.reset()
   }
 
-  return <section className="bg-slate-50 px-5 py-14 sm:px-8 lg:px-10"><div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr]"><div className="pt-4"><p className="font-bold uppercase tracking-[0.16em] text-amber-600">Book a service</p><h1 className="mt-3 text-4xl font-black leading-tight text-slate-900 sm:text-5xl">Let’s get it taken care of.</h1><p className="mt-5 text-lg leading-8 text-slate-600">Share a few details and we’ll help arrange a visit that works for you.</p><div className="mt-8 space-y-4">{['Choose the service you need', 'Pick a convenient date and time', 'We’ll confirm your appointment'].map((item, index) => <div className="flex items-center gap-3" key={item}><span className="grid size-8 place-items-center rounded-full bg-yellow-400 text-sm font-black text-slate-950">{index + 1}</span><span className="font-medium text-slate-700">{item}</span></div>)}</div><div className="mt-10 rounded-2xl bg-slate-950 p-5 text-white"><div className="flex items-center gap-3"><FaCalendarCheck className="text-2xl text-yellow-400" /><p className="font-bold">Need urgent help?</p></div><p className="mt-2 text-sm text-slate-300">Call our team and we’ll do our best to help quickly.</p><a className="mt-3 inline-block font-bold text-yellow-300" href="tel:+15550142020">+1 (555) 014-2020</a></div></div><form className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-9" onSubmit={handleSubmit}><h2 className="text-2xl font-black text-slate-900">Appointment details</h2><p className="mt-2 text-sm text-slate-500">Fields marked below are required.</p><div className="mt-7 grid gap-5 sm:grid-cols-2"><label className="form-control sm:col-span-2"><span className="mb-2 text-sm font-bold text-slate-700">Service needed</span><select className="select select-bordered w-full" defaultValue="" name="service" required><option disabled value="">Choose a service</option>{services.map((service) => <option key={service}>{service}</option>)}</select></label><label className="form-control"><span className="mb-2 text-sm font-bold text-slate-700">Full name</span><input className="input input-bordered w-full" name="name" placeholder="Alex Morgan" required /></label><label className="form-control"><span className="mb-2 text-sm font-bold text-slate-700">Phone number</span><input className="input input-bordered w-full" name="phone" placeholder="(555) 123-4567" required type="tel" /></label><label className="form-control"><span className="mb-2 text-sm font-bold text-slate-700">Email address</span><input className="input input-bordered w-full" name="email" placeholder="alex@example.com" required type="email" /></label><label className="form-control"><span className="mb-2 text-sm font-bold text-slate-700">Preferred date</span><input className="input input-bordered w-full" min={new Date().toISOString().slice(0, 10)} name="date" required type="date" /></label><label className="form-control"><span className="mb-2 text-sm font-bold text-slate-700">Preferred time</span><select className="select select-bordered w-full" defaultValue="" name="time" required><option disabled value="">Choose a time</option><option>Morning (8 AM–12 PM)</option><option>Afternoon (12 PM–4 PM)</option><option>Evening (4 PM–7 PM)</option></select></label><label className="form-control"><span className="mb-2 text-sm font-bold text-slate-700">Service address</span><input className="input input-bordered w-full" name="address" placeholder="Street address" required /></label><label className="form-control sm:col-span-2"><span className="mb-2 text-sm font-bold text-slate-700">Anything else we should know? <span className="font-normal text-slate-400">(optional)</span></span><textarea className="textarea textarea-bordered min-h-24 w-full" name="notes" placeholder="Describe the issue or add access instructions..." /></label></div>{booked && <div className="mt-5 flex items-center gap-2 rounded-xl bg-emerald-50 p-4 text-sm font-semibold text-emerald-800" role="status"><FaCheck /> Request received. This demo doesn’t send bookings to a server yet.</div>}<button className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-yellow-400 px-7 py-4 font-extrabold text-slate-950 transition hover:bg-yellow-300" type="submit">Request a booking <FaCalendarCheck /></button><p className="mt-4 text-center text-xs text-slate-500">We’ll contact you to confirm your appointment.</p></form></div></section>
+  return <>
+    <section className="relative isolate overflow-hidden bg-[#031532] px-5 py-12 text-white sm:px-8 sm:py-16 lg:px-10">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_78%_15%,rgba(0,102,255,0.42),transparent_45%)]" />
+      <div className="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-6">
+        <div>
+          <p className="inline-flex items-center gap-2 rounded-full border border-yellow-300/30 bg-yellow-300/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-yellow-300"><FaBolt /> Simple online booking</p>
+          <h1 className="mt-5 text-4xl font-black sm:text-5xl lg:text-6xl">Book a trusted <span className="text-yellow-400">electrician.</span></h1>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">Tell us what you need and when you’re available. We’ll take it from there.</p>
+        </div>
+        <a className="inline-flex items-center gap-3 rounded-full border border-white/20 px-5 py-3 font-bold text-white transition hover:bg-white/10" href="tel:+15550142020"><FaPhoneAlt className="text-yellow-400" /> Need urgent help? <span className="text-yellow-300">Call us</span></a>
+      </div>
+    </section>
+
+    <section className="bg-slate-50 px-5 py-10 sm:px-8 sm:py-14 lg:px-10">
+      <div className="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[0.78fr_1.22fr]">
+        <aside className="flex flex-col gap-5">
+          <div className="rounded-3xl bg-[#071a39] p-7 text-white shadow-xl shadow-blue-950/10 sm:p-8">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-yellow-300">A few simple steps</p>
+            <h2 className="mt-3 text-2xl font-black">We make it easy.</h2>
+            <div className="mt-7 space-y-6">{steps.map((step, index) => <div className="flex items-center gap-4" key={step}><span className="grid size-10 shrink-0 place-items-center rounded-full bg-yellow-400 font-black text-slate-950">0{index + 1}</span><span className="text-sm font-medium leading-6 text-slate-200">{step}</span></div>)}</div>
+            <div className="mt-8 flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4"><FaShieldAlt className="mt-0.5 shrink-0 text-xl text-yellow-400" /><p className="text-sm leading-6 text-slate-300"><span className="font-bold text-white">Professional care, every visit.</span><br />We’ll discuss your request and confirm the details before scheduling.</p></div>
+          </div>
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-7"><div className="flex items-center gap-3"><span className="grid size-11 place-items-center rounded-xl bg-yellow-300/30 text-lg text-amber-700"><FaClock /></span><div><h3 className="font-extrabold text-slate-900">Prefer to talk?</h3><p className="text-sm text-slate-500">Our team can help by phone.</p></div></div><a className="mt-5 inline-flex items-center gap-2 font-extrabold text-slate-900 hover:text-amber-700" href="tel:+15550142020">+1 (555) 014-2020 <FaArrowRight className="text-sm" /></a></div>
+        </aside>
+
+        <form className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-900/5 sm:p-9" onSubmit={handleSubmit}>
+          <div className="flex items-start justify-between gap-4 border-b border-slate-100 pb-6"><div><p className="text-xs font-bold uppercase tracking-[0.16em] text-amber-600">Appointment request</p><h2 className="mt-2 text-2xl font-black text-slate-900 sm:text-3xl">Your service details</h2><p className="mt-2 text-sm text-slate-500">Fill out the form and we’ll contact you to confirm.</p></div><span className="hidden size-12 shrink-0 place-items-center rounded-2xl bg-yellow-400 text-xl text-slate-950 sm:grid"><FaCalendarAlt /></span></div>
+
+          <div className="mt-7 grid gap-x-5 gap-y-5 sm:grid-cols-2">
+            <label className="form-control sm:col-span-2"><span className="mb-2 text-sm font-bold text-slate-700">What service do you need?</span><select className="select select-bordered w-full bg-white text-slate-900" defaultValue="" name="service" required><option disabled value="">Choose a service</option>{services.map((service) => <option key={service} value={service}>{service}</option>)}</select></label>
+            <label className="form-control"><span className="mb-2 text-sm font-bold text-slate-700">Full name</span><input autoComplete="name" className="input input-bordered w-full bg-white text-slate-900 placeholder:text-slate-400" name="name" placeholder="Alex Morgan" required /></label>
+            <label className="form-control"><span className="mb-2 text-sm font-bold text-slate-700">Phone number</span><input autoComplete="tel" className="input input-bordered w-full bg-white text-slate-900 placeholder:text-slate-400" name="phone" placeholder="(555) 123-4567" required type="tel" /></label>
+            <label className="form-control"><span className="mb-2 text-sm font-bold text-slate-700">Email address</span><input autoComplete="email" className="input input-bordered w-full bg-white text-slate-900 placeholder:text-slate-400" name="email" placeholder="alex@example.com" required type="email" /></label>
+            <label className="form-control"><span className="mb-2 text-sm font-bold text-slate-700">Preferred date</span><input className="input input-bordered w-full bg-white text-slate-900" min={new Date().toISOString().slice(0, 10)} name="date" required type="date" /></label>
+            <label className="form-control"><span className="mb-2 text-sm font-bold text-slate-700">Preferred time</span><select className="select select-bordered w-full bg-white text-slate-900" defaultValue="" name="time" required><option disabled value="">Choose a time</option><option value="morning">Morning · 8 AM–12 PM</option><option value="afternoon">Afternoon · 12 PM–4 PM</option><option value="evening">Evening · 4 PM–7 PM</option></select></label>
+            <label className="form-control"><span className="mb-2 text-sm font-bold text-slate-700">Service address</span><input autoComplete="street-address" className="input input-bordered w-full bg-white text-slate-900 placeholder:text-slate-400" name="address" placeholder="Street address" required /></label>
+            <label className="form-control sm:col-span-2"><span className="mb-2 text-sm font-bold text-slate-700">Tell us more <span className="font-normal text-slate-400">(optional)</span></span><textarea className="textarea textarea-bordered min-h-28 w-full bg-white text-slate-900 placeholder:text-slate-400" name="notes" placeholder="Describe the issue or add any helpful details..." /></label>
+          </div>
+
+          {booked && <div className="mt-6 flex items-start gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-semibold leading-6 text-emerald-800" role="status"><FaCheck className="mt-1 shrink-0" /><span>Request received. This demo doesn’t send bookings to a server yet; please call us to confirm your visit.</span></div>}
+          <button className="mt-7 inline-flex w-full items-center justify-center gap-3 rounded-full bg-yellow-400 px-7 py-4 font-extrabold text-slate-950 shadow-lg shadow-yellow-500/15 transition hover:-translate-y-0.5 hover:bg-yellow-300" type="submit">Request a booking <FaCalendarCheck /></button>
+          <p className="mt-4 text-center text-xs text-slate-500">No payment required to request an appointment.</p>
+        </form>
+      </div>
+    </section>
+  </>
 }

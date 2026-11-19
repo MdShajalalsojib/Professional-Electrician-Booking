@@ -1,6 +1,6 @@
 import { Link, Route, Routes } from 'react-router-dom'
-import { FaBolt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa'
 import Navbar from './Components/Navbar/Navbar.jsx'
+import Footer from './Components/Footer/Footer.jsx'
 import Home from './Pages/Home.jsx'
 import Services from './Pages/Services.jsx'
 import About from './Pages/About.jsx'
@@ -23,7 +23,7 @@ function App() {
         <Route element={<Booking />} path="/booking" />
         <Route element={<NotFound />} path="*" />
       </Routes>
-      <footer className="bg-slate-950 px-5 py-10 text-slate-300 sm:px-8 lg:px-10"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 sm:flex-row sm:items-center"><div><Link className="flex items-center gap-2 text-xl font-black text-white" to="/"><FaBolt className="text-yellow-400" /> ElectroFix</Link><p className="mt-2 text-sm text-slate-400">Your Trusted Partner for Every Electrical Solution.</p></div><div className="flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium"><Link className="hover:text-yellow-300" to="/services">Services</Link><Link className="hover:text-yellow-300" to="/about">About</Link><Link className="hover:text-yellow-300" to="/contact">Contact</Link><a className="inline-flex items-center gap-2 hover:text-yellow-300" href="tel:+15550142020"><FaPhoneAlt /> Call us</a><a className="inline-flex items-center gap-2 hover:text-yellow-300" href="mailto:hello@electrofix.example"><FaEnvelope /> Email</a></div></div><div className="mx-auto mt-8 max-w-7xl border-t border-white/10 pt-5 text-xs text-slate-500">© {new Date().getFullYear()} ElectroFix. All rights reserved.</div></footer>
+      <Footer />
     </div>
   )
 }
