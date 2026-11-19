@@ -1,0 +1,14 @@
+import { useState } from 'react'
+import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa'
+
+export default function Contact() {
+  const [sent, setSent] = useState(false)
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    setSent(true)
+    event.currentTarget.reset()
+  }
+
+  return <section className="bg-slate-50 px-5 py-16 sm:px-8 lg:px-10"><div className="mx-auto max-w-7xl"><div className="max-w-2xl"><p className="font-bold uppercase tracking-[0.16em] text-amber-600">Contact us</p><h1 className="mt-3 text-4xl font-black text-slate-900 sm:text-5xl">We’re here to help.</h1><p className="mt-4 text-lg leading-8 text-slate-600">Have a question or need help choosing a service? Send us a message.</p></div><div className="mt-10 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]"><div className="space-y-4">{[[FaPhoneAlt, 'Call our team', '+1 (555) 014-2020', 'tel:+15550142020'], [FaEnvelope, 'Email us', 'hello@electrofix.example', 'mailto:hello@electrofix.example'], [FaMapMarkerAlt, 'Service area', 'Local homes and businesses', null]].map(([Icon, title, detail, href]) => <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5" key={title}><span className="grid size-12 shrink-0 place-items-center rounded-xl bg-yellow-300/30 text-amber-700"><Icon /></span><div><p className="font-bold text-slate-900">{title}</p>{href ? <a className="mt-1 block text-sm text-slate-600 hover:text-amber-700" href={href}>{detail}</a> : <p className="mt-1 text-sm text-slate-600">{detail}</p>}</div></div>)}</div><form className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8" onSubmit={handleSubmit}><div className="grid gap-5 sm:grid-cols-2"><label className="form-control"><span className="mb-2 text-sm font-bold text-slate-700">Your name</span><input className="input input-bordered w-full" name="name" placeholder="Alex Morgan" required /></label><label className="form-control"><span className="mb-2 text-sm font-bold text-slate-700">Email address</span><input className="input input-bordered w-full" name="email" placeholder="alex@example.com" required type="email" /></label></div><label className="form-control mt-5"><span className="mb-2 text-sm font-bold text-slate-700">How can we help?</span><textarea className="textarea textarea-bordered min-h-36 w-full" name="message" placeholder="Tell us a little about what you need..." required /></label>{sent && <p className="mt-4 rounded-xl bg-emerald-50 p-3 text-sm font-semibold text-emerald-800" role="status">Thanks! Your message is ready. Our team will be in touch.</p>}<button className="mt-6 rounded-full bg-slate-950 px-7 py-4 font-bold text-white transition hover:bg-slate-800" type="submit">Send message</button><p className="mt-4 text-xs text-slate-500">Demo form: connect a backend to deliver messages.</p></form></div></div></section>
+}
