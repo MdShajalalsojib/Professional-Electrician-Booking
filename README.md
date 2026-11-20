@@ -20,6 +20,12 @@ ElectroFix is a responsive electrical service booking website built with React a
 |:---:|:---:|
 | <img src="docs/screenshots/booking.png" alt="Electrician booking form" width="560"> | <img src="docs/screenshots/bookings.png" alt="Admin booking management and customer conversation" width="560"> |
 
+<details>
+<summary>View the full-page home screenshot</summary>
+<br>
+<img src="docs/screenshots/home-full.jpg" alt="Full-page screenshot of the ElectroFix home page" width="720">
+</details>
+
 ## Features
 
 - Responsive home, services, about, and contact pages
