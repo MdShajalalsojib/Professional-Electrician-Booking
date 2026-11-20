@@ -36,17 +36,7 @@ ElectroFix is a responsive electrical service booking website built with React a
 - Admin booking dashboard with status updates and customer replies
 - Responsive navigation and booking calls to action
 
-## Run locally
-
-**Requirements:** Node.js and npm.
-
-```bash
-npm install
-npm run dev
-```
-
-Vite prints the local development URL in the terminal.
-
+ 
 ## Admin demo
 
 The default admin email is `admin@electrofix.com`. Register or sign in with that email to see the admin dashboard. To use another email for the local demo, set this in a `.env.local` file before starting Vite:
@@ -63,19 +53,6 @@ Location sharing is optional and requires the customer’s browser permission. B
 
 The contact and newsletter forms are demo interactions and do not send data to a server.
 
-## Useful scripts
+ 
 
-```bash
-npm run dev      # Start the Vite development server
-npm run build    # Create a production build in dist/
-npm run preview  # Preview the production build locally
-npm run lint     # Run Oxlint
-```
-
-## Built with
-
-- React 19
-- Vite 8
-- React Router
-- Tailwind CSS 4 and daisyUI
-- React Icons
+ 
